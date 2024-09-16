@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.emad.beltaje.getx_skeleton.getx_skeleton">
+    package="com.haophuong.fuji">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="getx_skeleton"
+        android:label="Fuji"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

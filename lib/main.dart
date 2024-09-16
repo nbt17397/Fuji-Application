@@ -44,7 +44,7 @@ Future<void> main() async {
       builder: (context, widget) {
         return GetMaterialApp(
               // todo add your app name
-              title: "GetXSkeleton",
+              title: "Fuji",
               useInheritedMediaQuery: true,
               debugShowCheckedModeBanner: false,
               builder: (context,widget) {
@@ -53,7 +53,7 @@ Future<void> main() async {
                   data: MyTheme.getThemeData(isLight: themeIsLight),
                   child: MediaQuery(
                     // prevent font from scalling (some people use big/small device fonts)
-                    // but we want our app font to still the same and dont get affected
+                    // but we want our app font to still the same and dont get affected 
                     data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
                     child: widget!,
                   ),

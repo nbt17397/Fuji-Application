@@ -14,7 +14,7 @@ const Map<String, String> enUs = {
   Strings.serverError : 'Server error',
   Strings.urlNotFound : 'Url not found',
 
-  Strings.goodMorning : 'Good morning',
+  Strings.goodMorning : 'Fuji Technology',
   Strings.name : 'Emad Beltaje',
   Strings.attendanceRegistration : 'Attendance Registration',
   Strings.time : '09:00 am',

@@ -7,6 +7,7 @@ import 'package:getx_skeleton/config/translations/localization_service.dart';
 
 import '../../../../../config/theme/theme_extensions/header_container_theme_data.dart';
 import '../../../../../config/translations/strings_enum.dart';
+import 'dart:math' as math;
 
 class Header extends StatelessWidget {
   const Header({super.key});
@@ -15,7 +16,7 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      height: 110.h,
+      height: 100.h,
       width: double.infinity,
       decoration: BoxDecoration(
         color: theme.primaryColor,
@@ -68,7 +69,7 @@ class Header extends StatelessWidget {
                       width: 1
                     )
                   ),
-                  child: Image.asset('assets/images/person1.png',height: double.infinity,),
+                  child: Transform.rotate(angle: -90 * (math.pi / 180), child: Image.asset('assets/images/logo.png',height: double.infinity,)),
                 ),
                 9.horizontalSpace,
                 Column(
@@ -82,7 +83,7 @@ class Header extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      Strings.name.tr,
+                      'Fuji',
                       style: theme.textTheme.bodyMedium?.copyWith(
                         color: Colors.white,
                         fontSize: 12.sp,
@@ -111,28 +112,28 @@ class Header extends StatelessWidget {
                   ),
                 ),
 
-                10.horizontalSpace,
+                // 10.horizontalSpace,
 
                 //----------------Language Button----------------//
-                InkWell(
-                  onTap: () => LocalizationService.updateLanguage(
-                    LocalizationService.getCurrentLocal().languageCode == 'ar' ? 'en' : 'ar',
-                  ),
-                  child: Ink(
-                    child: Container(
-                      height: 39.h,
-                      width: 39.h,
-                      decoration: theme.extension<HeaderContainerThemeData>()?.decoration,
-                      child: SvgPicture.asset(
-                        'assets/vectors/language.svg',
-                        fit: BoxFit.none,
-                        color: Colors.white,
-                        height: 10,
-                        width: 10,
-                      ),
-                    ),
-                  ),
-                ),
+                // InkWell(
+                //   onTap: () => LocalizationService.updateLanguage(
+                //     LocalizationService.getCurrentLocal().languageCode == 'ar' ? 'en' : 'ar',
+                //   ),
+                //   child: Ink(
+                //     child: Container(
+                //       height: 39.h,
+                //       width: 39.h,
+                //       decoration: theme.extension<HeaderContainerThemeData>()?.decoration,
+                //       child: SvgPicture.asset(
+                //         'assets/vectors/language.svg',
+                //         fit: BoxFit.none,
+                //         color: Colors.white,
+                //         height: 10,
+                //         width: 10,
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           )
