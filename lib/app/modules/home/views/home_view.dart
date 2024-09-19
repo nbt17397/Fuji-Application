@@ -18,6 +18,7 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       body: Column(
         children: [
@@ -25,58 +26,72 @@ class HomeView extends GetView<HomeController> {
           const Header(),
 
           // ----------------------- Content ----------------------- //
-          GetBuilder<HomeController>(builder: (_) {
-            return Expanded(
-              child: MyWidgetsAnimator(
-                apiCallStatus: controller.apiCallStatus,
-                loadingWidget: () => const Center(
-                  child: CupertinoActivityIndicator(),
-                ),
-                errorWidget: () => ApiErrorWidget(
-                  message: Strings.internetError.tr,
-                  retryAction: () => controller.getData(),
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                ),
-                successWidget: () => SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      ProductsList(),
-                    ],
-                  ),
-                ),
-              ),
-            );
-          }),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.qr_code),
-        onPressed: () async {
-          await Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => AiBarcodeScanner(
-                onDispose: () {
-                  debugPrint("Barcode scanner disposed!");
-                },
-                hideGalleryButton: false,
-                controller: MobileScannerController(
-                  detectionSpeed: DetectionSpeed.noDuplicates,
-                ),
-                onDetect: (BarcodeCapture capture) {
-                  final String? scannedValue = capture.barcodes.first.rawValue;
-                  if (scannedValue != null) {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            ProductDetailScreen(sku: scannedValue),
+          // GetBuilder<HomeController>(builder: (_) {
+          //   return Expanded(
+          //     child: MyWidgetsAnimator(
+          //       apiCallStatus: controller.apiCallStatus,
+          //       loadingWidget: () => const Center(
+          //         child: CupertinoActivityIndicator(),
+          //       ),
+          //       errorWidget: () => ApiErrorWidget(
+          //         message: Strings.internetError.tr,
+          //         retryAction: () => controller.getData(),
+          //         padding: EdgeInsets.symmetric(horizontal: 20.w),
+          //       ),
+          //       successWidget: () => SingleChildScrollView(
+          //         child: Column(
+          //           children: [
+          //             ProductsList(),
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          //   );
+          // }),
+          const Spacer(),
+          InkWell(
+              onTap: () async {
+                await Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => AiBarcodeScanner(
+                      onDispose: () {
+                        debugPrint("Barcode scanner disposed!");
+                      },
+                      hideGalleryButton: false,
+                      controller: MobileScannerController(
+                        detectionSpeed: DetectionSpeed.noDuplicates,
                       ),
-                    );
-                  }
-                },
-              ),
-            ),
-          );
-        },
+                      onDetect: (BarcodeCapture capture) {
+                        final String? scannedValue =
+                            capture.barcodes.first.rawValue;
+                        if (scannedValue != null) {
+                          Navigator.of(context)
+                              .push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  ProductDetailScreen(sku: scannedValue),
+                            ),
+                          )
+                              .then((_) {
+                            Navigator.of(context).pop();
+                          });
+                        }
+                      },
+                    ),
+                  ),
+                );
+              },
+              child: Icon(
+                Icons.qr_code,
+                size: 100.w,
+                color: theme.primaryColor,
+              )),
+          Text(
+            'Scan any QR code',
+            style: theme.textTheme.displaySmall,
+          ),
+          const Spacer(),
+        ],
       ),
     );
   }

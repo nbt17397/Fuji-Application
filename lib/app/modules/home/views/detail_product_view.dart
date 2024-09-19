@@ -64,7 +64,7 @@ class ProductDetailScreen extends StatelessWidget {
                         },
                       )
                     : const Icon(Icons.image_not_supported),
-                const SizedBox(height: 16),
+                const SizedBox(height: 16), 
                 // Hiển thị tên sản phẩm
                 Text(
                   name,
