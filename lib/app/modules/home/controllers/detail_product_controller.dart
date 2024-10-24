@@ -15,6 +15,10 @@ class ProductDetailController extends GetxController {
   void fetchProductDetails(String sku) async {
     final basicAuth = 'Basic ' + base64Encode(utf8.encode('${Constants.ckUsername}:${Constants.csPassword}'));
     isLoading(true);
+
+
+
+    
     try {
       final response = await http.get(
         Uri.parse('https://fuji.technology/wp-json/wc/v3/products?sku=$sku'),

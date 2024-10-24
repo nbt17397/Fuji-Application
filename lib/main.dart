@@ -11,10 +11,12 @@ import 'app/routes/app_pages.dart';
 import 'config/theme/my_theme.dart';
 import 'config/translations/localization_service.dart';
 import 'utils/fcm_helper.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
   // wait for bindings
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
 
   // initialize local db (hive) and register our custom adapters
   await MyHive.init(
@@ -59,7 +61,7 @@ Future<void> main() async {
                   ),
                 );
               },
-              initialRoute: AppPages.INITIAL, // first screen to show when app is running
+              initialRoute: AppPages.AUTH, // first screen to show when app is running
               getPages: AppPages.routes, // app screens
               locale: MySharedPref.getCurrentLocal(), // app language
               translations: LocalizationService.getInstance(), // localization services in app (controller app language)

@@ -1,5 +1,5 @@
 name: getx_skeleton
-version: 1.0.0+2
+version: 1.0.1+6
 publish_to: none
 description: start your project in the fastest way
 environment:
@@ -23,6 +23,7 @@ dependencies:
 
   firebase_core: ^3.0.0 # to initialize firebase services
   firebase_messaging: ^15.0.0 # fcm services
+  firebase_auth: any
   awesome_notifications: ^0.9.3+1 # notifications services (will be used for fcm)
 
   change_app_package_name: # change package name
