@@ -10,9 +10,12 @@ class AuthController extends GetxController {
   var isLoading = false.obs;
 
   // Đăng ký người dùng mới
-  Future<void> register(String email, String password) async {
+  Future<void> register(String email, String password, String displayName) async {
     try {
-      await auth.createUserWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential = await auth.createUserWithEmailAndPassword(email: email, password: password);
+
+      await userCredential.user?.updateDisplayName(displayName);
+      await userCredential.user?.reload();
       isLoggedIn(true);
       Get.offAll(() => HomeView()); // Chuyển đến HomeView sau khi đăng ký thành công
     } catch (e) {

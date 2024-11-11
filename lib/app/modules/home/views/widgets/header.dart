@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:getx_skeleton/app/modules/home/views/profile_view.dart';
 import 'package:getx_skeleton/config/theme/my_theme.dart';
 import 'package:getx_skeleton/config/translations/localization_service.dart';
 
@@ -19,7 +21,7 @@ class Header extends StatelessWidget {
       height: 100.h,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: theme.primaryColor,
+        color: Colors.blue,
       ),
       child: Stack(
         fit: StackFit.expand,
@@ -58,18 +60,29 @@ class Header extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  height: 39.h,
-                  width: 39.h,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFFFE2C2),
-                    borderRadius: BorderRadius.circular(8.r),
-                    border: Border.all(
-                      color: Colors.white,
-                      width: 1
-                    )
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => ProfileView(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    height: 39.h,
+                    width: 39.h,
+                    decoration: BoxDecoration(
+                        color: const Color(0xFFFFE2C2),
+                        borderRadius: BorderRadius.circular(8.r),
+                        border: Border.all(color: Colors.white, width: 1)),
+                    child: Transform.rotate(
+                        angle: -90 * (math.pi / 180),
+                        child: Image.asset(
+                          'assets/images/logo.png',
+                          height: double.infinity,
+                        )),
                   ),
-                  child: Transform.rotate(angle: -90 * (math.pi / 180), child: Image.asset('assets/images/logo.png',height: double.infinity,)),
                 ),
                 9.horizontalSpace,
                 Column(
@@ -94,23 +107,23 @@ class Header extends StatelessWidget {
                 const Spacer(),
 
                 //----------------Theme Button----------------//
-                InkWell(
-                  onTap: () => MyTheme.changeTheme(),
-                  child: Ink(
-                    child: Container(
-                      height: 39.h,
-                      width: 39.h,
-                      decoration: theme.extension<HeaderContainerThemeData>()?.decoration,
-                      child: SvgPicture.asset(
-                        Get.isDarkMode ? 'assets/vectors/moon.svg' : 'assets/vectors/sun.svg',
-                        fit: BoxFit.none,
-                        color: Colors.white,
-                        height: 10,
-                        width: 10,
-                      ),
-                    ),
-                  ),
-                ),
+                // InkWell(
+                //   onTap: () => MyTheme.changeTheme(),
+                //   child: Ink(
+                //     child: Container(
+                //       height: 39.h,
+                //       width: 39.h,
+                //       decoration: theme.extension<HeaderContainerThemeData>()?.decoration,
+                //       child: SvgPicture.asset(
+                //         Get.isDarkMode ? 'assets/vectors/moon.svg' : 'assets/vectors/sun.svg',
+                //         fit: BoxFit.none,
+                //         color: Colors.white,
+                //         height: 10,
+                //         width: 10,
+                //       ),
+                //     ),
+                //   ),
+                // ),
 
                 // 10.horizontalSpace,
 

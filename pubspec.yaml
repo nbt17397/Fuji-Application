@@ -1,5 +1,5 @@
 name: getx_skeleton
-version: 1.0.1+6
+version: 1.0.1+7
 publish_to: none
 description: start your project in the fastest way
 environment:
@@ -36,6 +36,7 @@ dependencies:
   cached_network_image: ^3.2.3
   flutter_html: ^3.0.0-beta.2
   webview_flutter: any
+  syncfusion_flutter_pdfviewer: ^27.1.58
 
   flutter:
     sdk: flutter
@@ -66,6 +67,7 @@ flutter:
     - assets/images/
     - assets/vectors/
     - assets/fonts/
+    - assets/pdfs/
 
   fonts:
     - family: Poppins
