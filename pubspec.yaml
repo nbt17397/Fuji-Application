@@ -1,5 +1,5 @@
 name: getx_skeleton
-version: 1.0.1+7
+version: 1.0.1+9
 publish_to: none
 description: start your project in the fastest way
 environment:
@@ -58,7 +58,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/logo.png"
+  image_path: "assets/icon/icon.png"
 
 flutter:
   uses-material-design: true
@@ -68,6 +68,7 @@ flutter:
     - assets/vectors/
     - assets/fonts/
     - assets/pdfs/
+    - assets/icon/
 
   fonts:
     - family: Poppins

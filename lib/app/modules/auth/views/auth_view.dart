@@ -42,12 +42,9 @@ class AuthView extends StatelessWidget {
                 children: [
                   const SizedBox(height: 50),
                   // App Logo
-                  Transform.rotate(
-                    angle: 90 * (math.pi / 180),
-                    child: Image.asset(
-                      'assets/images/logo.png', // Replace with your app's logo
-                      height: 150,
-                    ),
+                  Image.asset(
+                    'assets/images/logo.png', // Replace with your app's logo
+                    height: 150,
                   ),
                   const SizedBox(height: 30),
                   // Email Input

@@ -13,8 +13,8 @@ class _AppGuideScreenState extends State<AppGuideScreen> {
       appBar: AppBar(
         title: const Text('App Guide'),
       ),
-      body:  SfPdfViewer.network(
-        'https://iot.montanarigiulio.com/file_macchine/guide/guide-en.pdf',
+      body:  SfPdfViewer.asset(
+        'assets/pdfs/appguide.pdf',
         key: _pdfViewerKey,
       ),
     );

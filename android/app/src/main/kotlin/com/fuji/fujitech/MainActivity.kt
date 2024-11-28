@@ -1,4 +1,4 @@
-package com.haophuong.fuji
+package com.fuji.fujitech
 
 import io.flutter.embedding.android.FlutterActivity
 

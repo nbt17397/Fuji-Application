@@ -76,12 +76,10 @@ class Header extends StatelessWidget {
                         color: const Color(0xFFFFE2C2),
                         borderRadius: BorderRadius.circular(8.r),
                         border: Border.all(color: Colors.white, width: 1)),
-                    child: Transform.rotate(
-                        angle: -90 * (math.pi / 180),
-                        child: Image.asset(
-                          'assets/images/logo.png',
-                          height: double.infinity,
-                        )),
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      height: double.infinity,
+                    ),
                   ),
                 ),
                 9.horizontalSpace,
