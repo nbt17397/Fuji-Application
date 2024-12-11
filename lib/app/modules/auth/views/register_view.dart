@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../controllers/auth_controller.dart';
-import 'dart:math' as math;
 
-class RegisterView extends StatelessWidget {
+class RegisterView extends StatefulWidget {
+  @override
+  _RegisterViewState createState() => _RegisterViewState();
+}
+
+class _RegisterViewState extends State<RegisterView> {
   final AuthController authController = Get.put(AuthController());
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController displayNameController = TextEditingController(); // Thêm controller cho displayName
-
+  final TextEditingController displayNameController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  bool _obscureText = true;
 
   String? validateInput(String? value) {
     if (value == null || value.isEmpty) {
@@ -42,12 +46,9 @@ class RegisterView extends StatelessWidget {
                 children: [
                   const SizedBox(height: 50),
                   // App Logo
-                 Transform.rotate(
-                    angle: 90 * (math.pi / 180),
-                    child: Image.asset(
-                      'assets/images/logo.png', // Replace with your app's logo
-                      height: 150,
-                    ),
+                  Image.asset(
+                    'assets/images/logo.png', // Thay thế bằng logo của ứng dụng
+                    height: 150,
                   ),
                   const SizedBox(height: 30),
                   // Email Input
@@ -87,6 +88,19 @@ class RegisterView extends StatelessWidget {
                       ),
                       labelText: 'Password',
                       prefixIcon: const Icon(Icons.lock, color: Colors.black),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscureText
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: Colors.black,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscureText = !_obscureText;
+                          });
+                        },
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
@@ -98,14 +112,14 @@ class RegisterView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    obscureText: true,
+                    obscureText: _obscureText,
                     style: theme.textTheme.displayLarge?.copyWith(
                       color: Colors.black,
                       fontSize: 12.sp,
                     ),
                   ),
                   const SizedBox(height: 20),
-                  // Display Name Input (Mới thêm vào)
+                  // Display Name Input
                   TextFormField(
                     controller: displayNameController,
                     validator: validateInput,
@@ -132,7 +146,6 @@ class RegisterView extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 30),
-        
                   // Hiển thị trạng thái loading hoặc nút Register
                   Obx(() {
                     return authController.isLoading.value
@@ -143,7 +156,7 @@ class RegisterView extends StatelessWidget {
                                 authController.register(
                                   emailController.text.trim(),
                                   passwordController.text.trim(),
-                                  displayNameController.text.trim(), // Gửi displayName vào hàm register
+                                  displayNameController.text.trim(),
                                 );
                               } else {
                                 Get.snackbar(
@@ -161,12 +174,10 @@ class RegisterView extends StatelessWidget {
                                 style: TextStyle(color: Colors.white)),
                           );
                   }),
-        
                   const SizedBox(height: 10),
                   // Login Button
                   TextButton(
                     onPressed: () {
-                      // Điều hướng trở lại màn hình login
                       Get.back();
                     },
                     child: const Text(

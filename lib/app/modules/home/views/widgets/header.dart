@@ -73,15 +73,13 @@ class Header extends StatelessWidget {
                     height: 39.h,
                     width: 39.h,
                     decoration: BoxDecoration(
-                        color: const Color(0xFFFFE2C2),
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(8.r),
                         border: Border.all(color: Colors.white, width: 1)),
-                    child: Transform.rotate(
-                        angle: -90 * (math.pi / 180),
-                        child: Image.asset(
-                          'assets/images/logo.png',
-                          height: double.infinity,
-                        )),
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      height: double.infinity,
+                    ),
                   ),
                 ),
                 9.horizontalSpace,

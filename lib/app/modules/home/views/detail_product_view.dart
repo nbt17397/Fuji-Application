@@ -64,26 +64,26 @@ class ProductDetailScreen extends StatelessWidget {
                         },
                       )
                     : const Icon(Icons.image_not_supported),
-                const SizedBox(height: 16), 
+                const SizedBox(height: 16),
                 // Hiển thị tên sản phẩm
                 Text(
                   name,
-                  style:
-                      const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 8),
-                // Hiển thị trạng thái hàng
-                Text(
-                  'Stock Status: ${stockStatus == 'instock' ? 'In Stock' : 'Out of Stock'}',
-                  style: TextStyle(
-                      color:
-                          stockStatus == 'instock' ? Colors.green : Colors.red),
-                ),
+                // const SizedBox(height: 8),
+                // // Hiển thị trạng thái hàng
+                // Text(
+                //   'Stock Status: ${stockStatus == 'instock' ? 'In Stock' : 'Out of Stock'}',
+                //   style: TextStyle(
+                //       color:
+                //           stockStatus == 'instock' ? Colors.green : Colors.red),
+                // ),
                 const SizedBox(height: 16),
                 // Hiển thị mô tả sản phẩm
                 Html(data: short_description),
                 Html(data: description),
-          
+
                 const SizedBox(height: 16),
               ],
             ),

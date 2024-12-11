@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/modules/auth/views/register_view.dart';
+import 'package:getx_skeleton/app/modules/auth/views/resetpassword_view.dart';
 import '../controllers/auth_controller.dart';
-import 'dart:math' as math;
 
-class AuthView extends StatelessWidget {
+class AuthView extends StatefulWidget {
+  @override
+  _AuthViewState createState() => _AuthViewState();
+}
+
+class _AuthViewState extends State<AuthView> {
   final AuthController authController = Get.put(AuthController());
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
   final _formKey = GlobalKey<FormState>();
+  bool _obscureText = true;
 
   String? validateInput(String? value) {
     if (value == null || value.isEmpty) {
@@ -42,12 +47,9 @@ class AuthView extends StatelessWidget {
                 children: [
                   const SizedBox(height: 50),
                   // App Logo
-                  Transform.rotate(
-                    angle: 90 * (math.pi / 180),
-                    child: Image.asset(
-                      'assets/images/logo.png', // Replace with your app's logo
-                      height: 150,
-                    ),
+                  Image.asset(
+                    'assets/images/logo.png', // Replace with your app's logo
+                    height: 150,
                   ),
                   const SizedBox(height: 30),
                   // Email Input
@@ -87,6 +89,19 @@ class AuthView extends StatelessWidget {
                       ),
                       labelText: 'Password',
                       prefixIcon: const Icon(Icons.lock, color: Colors.black),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscureText
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: Colors.black,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscureText = !_obscureText;
+                          });
+                        },
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
@@ -98,14 +113,13 @@ class AuthView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    obscureText: true,
+                    obscureText: _obscureText,
                     style: theme.textTheme.displayLarge?.copyWith(
                       color: Colors.black,
                       fontSize: 12.sp,
                     ),
                   ),
                   const SizedBox(height: 30),
-        
                   // Hiển thị trạng thái loading hoặc nút Login
                   Obx(() {
                     return authController.isLoading.value
@@ -133,7 +147,6 @@ class AuthView extends StatelessWidget {
                                 style: TextStyle(color: Colors.white)),
                           );
                   }),
-        
                   const SizedBox(height: 10),
                   // Register Button
                   TextButton(
@@ -143,6 +156,18 @@ class AuthView extends StatelessWidget {
                     },
                     child: const Text(
                       'Don\'t have an account? Register',
+                      style: TextStyle(
+                        color: Colors.blueAccent,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Get.to(() => ResetPasswordView());
+                    },
+                    child: const Text(
+                      'Forgot Password?',
                       style: TextStyle(
                         color: Colors.blueAccent,
                         fontSize: 16,

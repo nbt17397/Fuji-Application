@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class AppGuideScreen extends StatefulWidget {
   @override
@@ -13,8 +14,8 @@ class _AppGuideScreenState extends State<AppGuideScreen> {
       appBar: AppBar(
         title: const Text('App Guide'),
       ),
-      body:  SfPdfViewer.network(
-        'https://iot.montanarigiulio.com/file_macchine/guide/guide-en.pdf',
+      body: SfPdfViewer.asset(
+        'assets/pdfs/appguide.pdf',
         key: _pdfViewerKey,
       ),
     );
