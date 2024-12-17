@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 
 import '../controllers/detail_product_controller.dart';
 
@@ -27,7 +28,7 @@ class ProductDetailScreen extends StatelessWidget {
         if (controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());
         } else if (controller.product.isEmpty) {
-          return const Center(child: Text('No product found.'));
+          return Center(child: Text(Strings.noProductFound.tr));
         }
 
         // Hiển thị thông tin sản phẩm

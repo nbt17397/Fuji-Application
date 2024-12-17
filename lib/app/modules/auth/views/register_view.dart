@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import '../controllers/auth_controller.dart';
 
 class RegisterView extends StatefulWidget {
@@ -18,7 +19,7 @@ class _RegisterViewState extends State<RegisterView> {
 
   String? validateInput(String? value) {
     if (value == null || value.isEmpty) {
-      return 'This field cannot be empty';
+      return Strings.errorFieldEmpty.tr;
     }
     return null;
   }
@@ -59,7 +60,7 @@ class _RegisterViewState extends State<RegisterView> {
                       labelStyle: const TextStyle(
                         color: Colors.black,
                       ),
-                      labelText: 'Email',
+                      labelText: Strings.labelEmail.tr,
                       prefixIcon: const Icon(Icons.email, color: Colors.black),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -86,7 +87,7 @@ class _RegisterViewState extends State<RegisterView> {
                       labelStyle: const TextStyle(
                         color: Colors.black,
                       ),
-                      labelText: 'Password',
+                      labelText: Strings.labelPassword.tr,
                       prefixIcon: const Icon(Icons.lock, color: Colors.black),
                       suffixIcon: IconButton(
                         icon: Icon(
@@ -127,7 +128,7 @@ class _RegisterViewState extends State<RegisterView> {
                       labelStyle: const TextStyle(
                         color: Colors.black,
                       ),
-                      labelText: 'Display Name',
+                      labelText: Strings.labelDisplayName.tr,
                       prefixIcon: const Icon(Icons.person, color: Colors.black),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -160,7 +161,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 );
                               } else {
                                 Get.snackbar(
-                                    'Error', 'Please fill in all fields.');
+                                    'Error', Strings.errorFillAllFields.tr);
                               }
                             },
                             style: ElevatedButton.styleFrom(
@@ -170,8 +171,8 @@ class _RegisterViewState extends State<RegisterView> {
                                 borderRadius: BorderRadius.circular(30.0),
                               ),
                             ),
-                            child: const Text('Register',
-                                style: TextStyle(color: Colors.white)),
+                            child: Text(Strings.buttonRegister.tr,
+                                style: const TextStyle(color: Colors.white)),
                           );
                   }),
                   const SizedBox(height: 10),
@@ -180,9 +181,9 @@ class _RegisterViewState extends State<RegisterView> {
                     onPressed: () {
                       Get.back();
                     },
-                    child: const Text(
-                      'Already have an account? Login',
-                      style: TextStyle(
+                    child: Text(
+                      Strings.promptLogin.tr,
+                      style: const TextStyle(
                         color: Colors.blueAccent,
                         fontSize: 16,
                       ),

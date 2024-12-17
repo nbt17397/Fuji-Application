@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class AppGuideScreen extends StatefulWidget {
@@ -12,7 +14,7 @@ class _AppGuideScreenState extends State<AppGuideScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('App Guide'),
+        title: Text(Strings.appGuide.tr),
       ),
       body: SfPdfViewer.asset(
         'assets/pdfs/appguide.pdf',

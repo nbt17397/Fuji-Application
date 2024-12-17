@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 
 import '../../home/views/home_view.dart';
 import '../views/auth_view.dart';
@@ -57,8 +58,7 @@ class AuthController extends GetxController {
     try {
       await auth.sendPasswordResetEmail(email: email);
       isSuccess(true); // Thành công
-      Get.snackbar(
-          "Success", "Password reset email sent! Please check your inbox.");
+      Get.snackbar("Success", Strings.passwordResetEmailSentCheckInbox.tr);
     } catch (e) {
       Get.snackbar("Error", e.toString());
     } finally {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import '../controllers/auth_controller.dart';
 
 class ResetPasswordView extends StatelessWidget {
@@ -14,7 +15,9 @@ class ResetPasswordView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Reset Password"),
+        title: Text(
+          Strings.resetPassword.tr,
+        ),
         backgroundColor: Colors.blue,
       ),
       body: Container(
@@ -35,7 +38,7 @@ class ResetPasswordView extends StatelessWidget {
               children: [
                 const SizedBox(height: 50),
                 Text(
-                  'Enter your email to reset your password',
+                  Strings.enterEmailToReset.tr,
                   style: TextStyle(fontSize: 16.sp, color: Colors.black),
                   textAlign: TextAlign.center,
                 ),
@@ -45,15 +48,15 @@ class ResetPasswordView extends StatelessWidget {
                   controller: emailController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
+                      return Strings.pleaseEnterEmail.tr;
                     }
                     if (!GetUtils.isEmail(value)) {
-                      return 'Invalid email format';
+                      return Strings.invalidEmailFormat.tr;
                     }
                     return null;
                   },
                   decoration: InputDecoration(
-                    labelText: 'Email',
+                    labelText: Strings.labelEmail.tr,
                     prefixIcon: const Icon(Icons.email, color: Colors.black),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
@@ -78,9 +81,10 @@ class ResetPasswordView extends StatelessWidget {
                         const Icon(Icons.check_circle,
                             color: Colors.green, size: 50),
                         const SizedBox(height: 10),
-                        const Text(
-                          "Password reset email sent successfully!",
-                          style: TextStyle(color: Colors.green, fontSize: 16),
+                        Text(
+                          Strings.passwordResetEmailSent.tr,
+                          style: const TextStyle(
+                              color: Colors.green, fontSize: 16),
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -100,8 +104,8 @@ class ResetPasswordView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
-                    child: const Text('Reset Password',
-                        style: TextStyle(color: Colors.white)),
+                    child: Text(Strings.resetPasswordButton.tr,
+                        style: const TextStyle(color: Colors.white)),
                   );
                 }),
               ],

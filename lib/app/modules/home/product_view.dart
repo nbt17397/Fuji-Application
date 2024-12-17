@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/modules/home/views/detail_product_view.dart';
 import 'package:getx_skeleton/config/theme/theme_extensions/employee_list_item_theme_data.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import 'package:getx_skeleton/utils/constants.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -27,7 +28,7 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
     // var employeeItemTheme = theme.extension<EmployeeListItemThemeData>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Catalogue'),
+        title: Text(Strings.catalogues.tr),
       ),
       // body: Obx(() {
       //   if (controller.isLoading.value) {
@@ -150,7 +151,7 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
       //     ),
       //   );
       // }),
-      body:  SfPdfViewer.asset(
+      body: SfPdfViewer.asset(
         'assets/pdfs/catalogue.pdf',
         key: _pdfViewerKey,
       ),
@@ -170,7 +171,8 @@ class ProductsController extends GetxController {
 
   void fetchProducts() async {
     final basicAuth = 'Basic ' +
-        base64Encode(utf8.encode('${Constants.ckUsername}:${Constants.csPassword}'));
+        base64Encode(
+            utf8.encode('${Constants.ckUsername}:${Constants.csPassword}'));
     isLoading(true);
     try {
       final response = await http.get(

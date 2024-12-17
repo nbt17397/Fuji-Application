@@ -88,13 +88,13 @@ class Header extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      '${Strings.goodMorning.tr},🌞',
+                      '${Strings.goodMorning.tr}',
                       style: theme.textTheme.bodyMedium?.copyWith(
                         color: Colors.white,
                       ),
                     ),
                     Text(
-                      'Fuji',
+                      '🌞',
                       style: theme.textTheme.bodyMedium?.copyWith(
                         color: Colors.white,
                         fontSize: 12.sp,
@@ -126,25 +126,31 @@ class Header extends StatelessWidget {
                 // 10.horizontalSpace,
 
                 //----------------Language Button----------------//
-                // InkWell(
-                //   onTap: () => LocalizationService.updateLanguage(
-                //     LocalizationService.getCurrentLocal().languageCode == 'ar' ? 'en' : 'ar',
-                //   ),
-                //   child: Ink(
-                //     child: Container(
-                //       height: 39.h,
-                //       width: 39.h,
-                //       decoration: theme.extension<HeaderContainerThemeData>()?.decoration,
-                //       child: SvgPicture.asset(
-                //         'assets/vectors/language.svg',
-                //         fit: BoxFit.none,
-                //         color: Colors.white,
-                //         height: 10,
-                //         width: 10,
-                //       ),
-                //     ),
-                //   ),
-                // ),
+                InkWell(
+                  onTap: () => LocalizationService.updateLanguage(
+                    LocalizationService.getCurrentLocal().languageCode == 'ja'
+                        ? 'en'
+                        : 'ja',
+                  ),
+                  child: Ink(
+                    child: Container(
+                      height: 39.h,
+                      width: 39.h,
+                      decoration: theme
+                          .extension<HeaderContainerThemeData>()
+                          ?.decoration,
+                      child: Image.asset(
+                        LocalizationService.getCurrentLocal().languageCode ==
+                                'ja'
+                            ? 'assets/images/en.png'
+                            : 'assets/images/jp.png',
+                        fit: BoxFit.cover,
+                        height: 10,
+                        width: 10,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           )

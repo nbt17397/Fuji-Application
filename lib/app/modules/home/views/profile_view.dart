@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:getx_skeleton/app/modules/auth/views/auth_view.dart';
 import 'package:get/get.dart';
+import 'package:getx_skeleton/config/translations/strings_enum.dart';
 
 class ProfileView extends StatelessWidget {
   final User? user = FirebaseAuth.instance.currentUser;
@@ -10,7 +11,7 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Account Information'),
+        title: Text(Strings.accountInformation.tr),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
       ),
@@ -45,7 +46,7 @@ class ProfileView extends StatelessWidget {
               SizedBox(height: 16),
               Center(
                 child: Text(
-                  user?.displayName ?? 'No Display Name',
+                  user?.displayName ?? Strings.noDisplayName.tr,
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -69,7 +70,7 @@ class ProfileView extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'Sign Out',
+                  Strings.signOut.tr,
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
@@ -79,17 +80,16 @@ class ProfileView extends StatelessWidget {
                   bool? confirmDelete = await showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
-                      title: Text('Delete Account'),
-                      content: Text(
-                          'Are you sure you want to delete your account? This action cannot be undone.'),
+                      title: Text(Strings.deleteAccount.tr),
+                      content: Text(Strings.confirmDeleteAccount.tr),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.of(context).pop(false),
-                          child: Text('Cancel'),
+                          child: Text(Strings.cancel.tr),
                         ),
                         TextButton(
                           onPressed: () => Navigator.of(context).pop(true),
-                          child: Text('Delete'),
+                          child: Text(Strings.delete.tr),
                         ),
                       ],
                     ),
@@ -101,8 +101,7 @@ class ProfileView extends StatelessWidget {
                       Get.offAll(() => AuthView());
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text(
-                            'Unable to delete account. Please log in again and try.'),
+                        content: Text(Strings.unableToDeleteAccount.tr),
                       ));
                     }
                   }
@@ -114,7 +113,7 @@ class ProfileView extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'Delete Account',
+                  Strings.deleteAccountButton.tr,
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
