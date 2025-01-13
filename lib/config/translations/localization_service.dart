@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../app/data/local/my_shared_pref.dart';
-import 'ar_AR/ar_ar_translation.dart';
+import 'ja_JP/ja_jp_translation.dart';
 import 'en_US/en_us_translation.dart';
+import 'ja_JP/ja_jp_translation.dart';
 
 class LocalizationService extends Translations {
   // prevent creating instance
@@ -23,20 +24,20 @@ class LocalizationService extends Translations {
   // supported languages
   static Map<String,Locale> supportedLanguages = {
     'en' : const Locale('en', 'US'),
-    'ar' : const Locale('ar', 'AR'),
+    'ja': const Locale('ja', 'JP'),
   };
 
   // supported languages fonts family (must be in assets & pubspec yaml) or you can use google fonts
   static Map<String,TextStyle> supportedLanguagesFontsFamilies = {
     // todo add your English font families (add to assets/fonts, pubspec and name it here) default is poppins for english and cairo for arabic
     'en' : const TextStyle(fontFamily: 'Poppins'),
-    'ar': const TextStyle(fontFamily: 'Cairo'),
+    'ja': const TextStyle(fontFamily: 'NotoSansJP'),
   };
 
   @override
   Map<String, Map<String, String>> get keys => {
     'en_US': enUs,
-    'ar_AR': arAR,
+    'ja_JP': jaJP,
   };
 
   /// check if the language is supported

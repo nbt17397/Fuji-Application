@@ -46,7 +46,7 @@ class DataGrid extends StatelessWidget {
     //   iconBackgroundColor: const Color(0xFFAB99D9),
     // ),
     DataGridModelMock(
-      title: 'Catalogues',
+      title: Strings.catalogues.tr,
       iconPath: 'assets/vectors/absent.svg',
       backgroundColor: const Color(0xFFFEF0EF),
       iconBackgroundColor: const Color(0xFFF9928A),
@@ -58,7 +58,7 @@ class DataGrid extends StatelessWidget {
     //   iconBackgroundColor: const Color.fromARGB(255, 115, 179, 152),
     // ),
     DataGridModelMock(
-      title: 'App Guide',
+      title: Strings.appGuide.tr,
       iconPath: 'assets/vectors/tasks.svg',
       backgroundColor: const Color.fromARGB(255, 243, 243, 246),
       iconBackgroundColor: const Color.fromARGB(255, 236, 205, 30),
@@ -84,15 +84,15 @@ class DataGrid extends StatelessWidget {
         var gridData = data[index];
         return GestureDetector(
           onTap: () {
-            if (gridData.title == 'Catalogues') {
+            if (gridData.title == 'Catalogues' || gridData.title == 'カタログ') {
               Navigator.push(
                 context,
                 CupertinoPageRoute(
                   builder: (context) => ProductsListScreen(),
                 ),
               );
-            }
-            else if (gridData.title == 'App Guide') {
+            } else if (gridData.title == 'App Guide' ||
+                gridData.title == 'アプリガイド') {
               Navigator.push(
                 context,
                 CupertinoPageRoute(

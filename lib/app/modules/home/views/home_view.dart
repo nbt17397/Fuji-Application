@@ -23,12 +23,12 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Colors.blue, Colors.white],
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Colors.blue, Colors.white],
+          ),
         ),
-      ),
         child: Column(
           children: [
             // ----------------------- Header ----------------------- //
@@ -46,7 +46,8 @@ class HomeView extends GetView<HomeController> {
                             builder: (context) => AiBarcodeScanner(
                               onDispose: () {
                                 debugPrint("Barcode scanner disposed!");
-                              },sheetTitle: 'Make a new Scan',
+                              },
+                              sheetTitle: Strings.makeANewScan.tr,
                               hideGalleryButton: false,
                               controller: MobileScannerController(
                                 detectionSpeed: DetectionSpeed.noDuplicates,
@@ -58,8 +59,8 @@ class HomeView extends GetView<HomeController> {
                                   Navigator.of(context)
                                       .push(
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          ProductDetailScreen(sku: scannedValue),
+                                      builder: (context) => ProductDetailScreen(
+                                          sku: scannedValue),
                                     ),
                                   )
                                       .then((_) {
@@ -75,20 +76,20 @@ class HomeView extends GetView<HomeController> {
                         decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 239, 71, 59),
                             borderRadius: BorderRadius.circular(6)),
-                        child: const ListTile(
+                        child: ListTile(
                           title: Text(
-                            'Make a new Scan',
-                            style: TextStyle(
+                            Strings.makeANewScan.tr,
+                            style: const TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white),
                           ),
-                          trailing: Icon(
+                          trailing: const Icon(
                             Icons.arrow_forward_ios,
                             size: 17,
                             color: Colors.white,
                           ),
-                          leading: Icon(
+                          leading: const Icon(
                             Icons.qr_code_scanner_sharp,
                             size: 32,
                             color: Colors.white,
@@ -100,7 +101,7 @@ class HomeView extends GetView<HomeController> {
                     DataGrid()
                   ],
                 ))
-        
+
             // ----------------------- Content ----------------------- //
             // GetBuilder<HomeController>(builder: (_) {
             //   return Expanded(
